@@ -6,34 +6,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Lista de Tarefas</title>
 </head>
-<body>
-    <header class="flex justify-between items-center py-4 px-15 bg-[#e8d6c0]"> <!-- bg-gradient-to-r from-cor via-cor to-cor -->
-        <input type="text" placeholder="Pesquisar..." class="h-10 pl-4 w-100 rounded bg-[#a1281c]" onkeyup="pesquisarCard(event.target.value)" />
-        <button class="leading-10 bg-[#000000] rounded text-white px-4 font-bold duration-200 hover:bg-[#e96f1b] hover:text-[#3c1402] cursor-pointer">Nova tarefa</button>
-    </header>
+<body class="bg-[#a1281c] h-screen flex justify-center items-center">
+    <div class="bg-[#e8d6c0] shadow-lg rounded-lg p-4">
+        <h1 class="font-bold text-xl mb-6">Seja bem-vindo(a)!</h1>
+        <form class="flex flex-col w-100">
+            <label for="email" class="uppercase textxs font-bold mb-2 block">E-mail</label>
+            <input type="email" placeholder="email@email.com" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none mb-4" required />
+            <label for="senha" class="uppercase textxs font-bold mb-2 block">Senha</label>
+            <input type="password" placeholder="Digite sua senha" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none" required />
+            <a href="/cadastrar.hmtl" class="my-2 text-right">Cadastre-se</a>
+            <button type="submit" class="w-full h-10 rounded bg-[#92938d] text-black hover:text-white duration-200 hover:bg-[#a1281c] hover:text-white font-bold">Logar</button>
+        </form>
+    </div>
 
-    <main class="p-15 bg-[#3c1402]">
-        <h1 class="text-3xl text-[#e96f1b] font-bold mb-6">Tarefas</h1>
-        <div id="tarefas" class="grid grid-cols-3 gap-4">
-            <div class="bg-[#ca9a57] p-4 rounded-lg">
-                <h3 class="font-bold mb-4">Título do card</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et repellat aut enim corrupti alias doloribus perspiciatis voluptates hic consectetur exercitationem sit cum earum suscipit assumenda quisquam, natus aliquam fuga.</p>
-            </div>
-        </div>
-
-        <div id="novo-card" class="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2>Qual o título do seu card?</h2>
-                <input type="text" placeholder="Titulo" class="h-10 pl-4 w-100 rounded bg-[#a1281c]" />
-            </div>
-        </div>
-
-        <!-- <div class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                Conteúdo do pop-up
-            </div>
-        </div> -->
-    </main>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
 </body>
 </html>
