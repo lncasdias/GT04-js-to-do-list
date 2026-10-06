@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="flex justify-between items-center py-4 px-15 bg-[#e8d6c0]"> <!-- bg-gradient-to-r from-cor via-cor to-cor -->
-        <input type="text" placeholder="Pesquisar..." class="h-10 pl-4 w-100 rounded bg-[#a1281c]"/>
+        <input type="text" placeholder="Pesquisar..." class="h-10 pl-4 w-100 rounded bg-[#a1281c]" onkeyup="pesquisarCard(event.target.value)" />
         <button class="leading-10 bg-[#000000] rounded text-white px-4 font-bold duration-200 hover:bg-[#e96f1b] hover:text-[#3c1402] cursor-pointer">Nova tarefa</button>
     </header>
 
@@ -20,6 +20,19 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et repellat aut enim corrupti alias doloribus perspiciatis voluptates hic consectetur exercitationem sit cum earum suscipit assumenda quisquam, natus aliquam fuga.</p>
             </div>
         </div>
+
+        <div id="novo-card" class="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2>Qual o título do seu card?</h2>
+                <input type="text" placeholder="Titulo" class="h-10 pl-4 w-100 rounded bg-[#a1281c]" />
+            </div>
+        </div>
+
+        <!-- <div class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                Conteúdo do pop-up
+            </div>
+        </div> -->
     </main>
     <script src="index.js"></script>
 </body>
