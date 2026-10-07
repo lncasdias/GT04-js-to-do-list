@@ -9,16 +9,55 @@
 <body class="bg-[#a1281c] h-screen flex justify-center items-center">
     <div class="bg-[#e8d6c0] shadow-lg rounded-lg p-4">
         <h1 class="font-bold text-xl mb-6">Seja bem-vindo(a)!</h1>
-        <form class="flex flex-col w-100">
+        <form class="flex flex-col w-100" onsubmit="logar()">
             <label for="email" class="uppercase textxs font-bold mb-2 block">E-mail</label>
-            <input type="email" placeholder="email@email.com" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none mb-4" required />
+            <input id="email" type="email" placeholder="email@email.com" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none mb-4" required />
             <label for="senha" class="uppercase textxs font-bold mb-2 block">Senha</label>
-            <input type="password" placeholder="Digite sua senha" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none" required />
+            <input id="senha" type="password" placeholder="Digite sua senha" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none" required />
             <a href="/cadastrar.hmtl" class="my-2 text-right">Cadastre-se</a>
             <button type="submit" class="w-full h-10 rounded bg-[#92938d] text-black hover:text-white duration-200 hover:bg-[#a1281c] hover:text-white font-bold">Logar</button>
         </form>
     </div>
 
+    <script>
+        function logar(){
+            event.preventDefault();
+
+            let email = document.querySelector("#email").value;
+            let senha = document.querySelector("#senha").value;
+
+            let dados = {
+                email,
+                senha
+            }
+
+            fetch("https://js-lista-de-tarefas-api.onrender.com/", {
+                method: "post",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(resposta => resposta.json())
+            .then(json => {
+                console.log(json)
+                if (json.tipo == "warning"){
+                    alert(json.mensagem);
+                    return
+                } else if (json.tipo == "error"){
+                    alert(json.mensagem);
+                    return
+                }
+
+                alert(json.mensagem);
+                window.location.href = "tarefas.html";
+            })
+
+            .catch(error => {
+                alert(error.message)
+            })
+        }
+    </script>
     <!-- <script src="index.js"></script> -->
 </body>
 </html>
