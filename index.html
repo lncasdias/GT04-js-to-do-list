@@ -15,7 +15,7 @@
             <label for="senha" class="uppercase textxs font-bold mb-2 block">Senha</label>
             <input id="senha" type="password" placeholder="Digite sua senha" class="pl-3 h-10 border-2 border-slate-400 focus:border-[#a1281c] duration-150 rounded outline-none" required />
             <a href="/cadastrar.hmtl" class="my-2 text-right">Cadastre-se</a>
-            <button type="submit" class="w-full h-10 rounded bg-[#92938d] text-black hover:text-white duration-200 hover:bg-[#a1281c] hover:text-white font-bold">Logar</button>
+            <button type="submit" class="w-full h-10 rounded bg-[#92938d] text-black hover:text-white duration-200 hover:bg-[#a1281c] hover:text-white font-bold cursor-pointer">Logar</button>
         </form>
     </div>
 
@@ -31,7 +31,7 @@
                 senha
             }
 
-            fetch("https://js-lista-de-tarefas-api.onrender.com/", {
+            fetch("https://js-lista-de-tarefas-api.onrender.com/login", {
                 method: "post",
                 headers: {
                     "Content-type": "application/json"
@@ -48,6 +48,8 @@
                     alert(json.mensagem);
                     return
                 }
+
+                sessionStorage.setItem("usuario", JSON.stringify(json.usuario));
 
                 alert(json.mensagem);
                 window.location.href = "tarefas.html";

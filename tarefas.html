@@ -8,35 +8,37 @@
 </head>
 <body>
     <header class="flex justify-between items-center py-4 px-15 bg-[#e8d6c0]"> <!-- bg-gradient-to-r from-cor via-cor to-cor -->
-        <input type="text" placeholder="Pesquisar..." class="h-10 pl-4 w-100 rounded bg-[#a1281c]" onkeyup="pesquisarCard(event.target.value)" />
-        <button class="leading-10 bg-[#000000] rounded text-white px-4 font-bold duration-200 hover:bg-[#e96f1b] hover:text-[#3c1402] cursor-pointer" onclick="novaTarefa()">Nova tarefa</button>
+        <input type="text" placeholder="Pesquisar..." class="h-10 pl-4 w-100 rounded bg-[#a1281c] border-2 border-[#92938d]" onkeyup="pesquisarCard(event.target.value)" />
+        <button class="leading-10 bg-[#000000] rounded text-white px-4 font-bold duration-200 hover:bg-[#a1281c] cursor-pointer" onclick="novaTarefa()">Nova tarefa</button>
     </header>
 
-    <main class="p-15 bg-[#3c1402]">
-        <h1 class="text-3xl text-[#e96f1b] font-bold mb-6">Tarefas</h1>
+    <main class="p-15 bg-[#a1281c] h-screen">
+        <h1 class="text-3xl text-[#e8d6c0] font-bold mb-6">Tarefas</h1>
         <div id="tarefas" class="grid grid-cols-3 gap-4">
-            <div class="bg-[#ca9a57] p-4 rounded-lg">
-                <h3 class="font-bold mb-4">Título do card</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et repellat aut enim corrupti alias doloribus perspiciatis voluptates hic consectetur exercitationem sit cum earum suscipit assumenda quisquam, natus aliquam fuga.</p>
+            <div class="bg-[#e8d6c0] p-4 rounded-lg">
+                <h3 id="titulo-exemplo" class="font-bold mb-4">Título do card</h3>
+                <p class="conteudo-exemplo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe et repellat aut enim corrupti alias doloribus perspiciatis voluptates hic consectetur exercitationem sit cum earum suscipit assumenda quisquam, natus aliquam fuga.</p>
             </div>
         </div>
 
-        <div id="novoCard" class="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
+        <div id="overlay" class="hidden w-full h-screen bg-black/30 fixed top-0 left-0" onclick="closePopUp()"></div>
+        <div id="novoCard" class="hidden fixed inset-0 flex items-center justify-center bg-black/30 z-50 duration-200">
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <button id="fechar" class="cursor-pointer flex align-right text-center" onclick="closePopup">X</button><br/>
-                <input type="text" placeholder="Titulo do card" class="h-10 pl-4 w-100 rounded bg-[#a1281c]" />
-                <p class="text-xs mt-1">Qual o título do seu card?</p>
+                <div class="flex justify-end">
+                    <button id="fechar" class="cursor-pointer text-right mb-4 font-bold" onclick="closePopUp()">X</button><br/>
+                </div>
+                <form class="flex flex-col">
+                    <input id="titulo" type="text" placeholder="Titulo do card" class="h-10 pl-4 w-100 rounded bg-[#a1281c]" />
+                    <label for="titulo" class="text-xs mt-1 mb-4">Qual o título do seu card?</label>
 
-                <input type="text" placeholder="Digite o seu texto aqui" class="h-10 pl-4 w-100 rounded bg-[#a1281c]"">
-                <p class="text-xs mt-1">O que deseja se lembrar?</p>
+                    <input id="tarefa" type="text" placeholder="Digite o seu texto aqui" class="h-10 pl-4 w-100 rounded bg-[#a1281c]" />
+                    <label for="tarefa" class="text-xs mt-1 mb-4">Adicione o seu texto</label>
+
+                    <button class="leading-10 w-20 bg-[#000000] rounded text-white px-4 font-bold duration-200 hover:bg-[#a1281c] cursor-pointer block" onclick="novaTarefa()">Criar</button>
+                </form>
             </div>
         </div>
 
-        <!-- <div class="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                Conteúdo do pop-up
-            </div>
-        </div> -->
     </main>
     <script src="index.js"></script>
 </body>
